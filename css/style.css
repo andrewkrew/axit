@@ -1,0 +1,750 @@
+*{ /*селектор обнуления отступов и изменение формулы расчета размеров блоков */
+	padding: 0; /*отсупы внутри блока*/
+	margin: 0; /*отсупы снаружи блока*/
+	box-sizing: border-box; /* задаваемая ширина и высота элементов будет оставаться неизменной при изменении padding и border*/
+}
+
+body{ /*подключение основного шрифта для документа*/
+	font-family: 'Raleway', sans-serif; /*семейство шрифта*/
+	font-weight: 400; /*насыщенность шрифта*/
+	font-size: 18px; /*размер шрифта*/
+	line-height: 21px; /*высота отступов*/
+}
+
+ol, ul { /*убираем маркеры в списках*/
+	list-style-type: none;
+}
+
+a{ /*убираем подчеркивание в ссылках */
+	text-decoration: none;
+}
+
+a, img { /*убираем оступы и рамки в некоторых браузерах */
+	border: 0;
+	outline: none;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+/* ------Header-------- */
+
+.header{ /*задаем высоту и цвет заливки шапки*/
+	height: 76px;
+	background-color: #000000; /*цвет заливки*/
+}
+
+.wrapper{ /*задаем рабочую область сайта*/
+	margin: 0 auto; /*выравние блока по центру*/
+	width: 1200px;
+	padding: 0 15px;
+}
+
+.header__wrapper, /*задаем цепочку наследования высоты элементов для флекса*/
+.header__nav,
+.header__nav ul,
+.header__nav li,
+.header__nav a{
+	height: 100%;
+}
+
+.header__wrapper{ /*задаем флекс контейнер для хедера*/
+	display: flex;
+	justify-content: space-between; /*метод выравнивания элементов по главной оси*/
+	align-items: center; /*метод выравнивания элементов по второстепенной оси*/
+}
+
+.header__logo{
+	position: relative;
+	left: 0;
+	transform: translateX(-22px);
+}
+
+.header__logo img{ /*задаем размеры логотипа*/
+	width: 87px;
+	height: 31px;
+}
+
+/* ------Burger-------- */
+
+.burger-menu {
+	position: relative;
+	width: 24px;
+	height: 19px;
+	margin-right: 20px;
+	display: none;
+}
+
+#burger {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+label[for='burger'] {
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.burger__line {
+	display: block;
+	height: 3px;
+	background-color: #ffffff;
+	position: relative;
+	transition: transform 0.4s ease-in, opacity 0.4s 0.2s ease-out;
+}
+
+#burger:checked ~ label[for='burger'] .burger__line {
+	transition: transform 0.4s ease-in, opacity 0.4s ease-out;
+}
+
+.burger__line:not(:last-child) {
+	margin-bottom: 5px;
+}
+
+#burger:checked ~ label[for='burger'] .burger__line_top {
+	transform: translateY(260%) rotate(45deg) ;
+}
+
+#burger:checked ~ label[for='burger'] .burger__line_mid {
+	opacity: 0;
+}
+
+#burger:checked ~ label[for='burger'] .burger__line_bottom {
+	transform: translateY(-260%) rotate(-45deg) ;
+}
+
+.hidden-menu{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-top: 56px;
+	background-color: #000000;
+	z-index: -1;
+}
+
+.hidden-menu__nav {
+	margin: 0 auto;
+	padding: 55px 20px 0;
+	width: 50%;
+	min-width: 226px;
+	height: 100%;
+	text-align: center;
+}
+
+.hidden-menu__nav ul .nav__item a{
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 19px;
+	color: #ffffff;
+}
+
+.hidden-menu__nav ul .nav__item:not(:last-child) a{
+	margin-bottom: 55px;
+}
+
+.header__nav ul{ /*задаем флекс контейнер для меню в хедере*/
+	display: flex;
+}
+
+.header__nav .nav__item a{
+	width: 114px; /*ширина пункта меню*/
+	display: flex;
+	justify-content: center; /*ровняем по центру гл. оси*/
+	align-items: center; /*ровняем по центру вт. оси*/
+	color: #ffffff; /*цвет шрифта*/
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	text-transform: uppercase; /*все буквы верхнего регистра*/
+	transition: all 0.25s ease-in-out;
+}
+
+.header__nav .nav__item a:hover{ /*изменяем стили при наведении курсора*/
+	font-weight: 700;
+	font-size: 13px;
+	background-color: #EC7979;
+}
+
+.header__nav .nav__item a:active{ /*изменяем стили при нажатии курсора*/
+	font-weight: 700;
+	font-size: 13px;
+	text-transform: uppercase;
+	background-color: #AB4949;
+}
+
+/* ------Banner-------- */
+
+.banner{ /*задаем фонове изображение с затемнением в банере*/
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/banner.jpg");
+	background-repeat: no-repeat; /*не повторять фоновое изображение*/
+	background-position: center; /*центрируем фоновое изображение в элнменте*/
+	background-size: cover; /*подгоняем фоновое изображение по размерам (растягивание/сужение)*/
+}
+
+.banner__container{ 
+	padding: 207px 0 185px; /*задаем внутренние отступы в банере*/
+	display: flex;
+	justify-content: space-between;
+	column-gap: 20px;
+}
+
+.banner__info{ /*задаем отсупы элементу*/
+	padding-top: 23px;
+	color: #ffffff;
+	flex: 1 1 auto;
+}
+
+.banner__logo{ /*задаем отсупы элементу*/
+	margin-bottom: 72px;
+}
+
+.banner__logo img{ /*ширина логотопа на банере*/
+	width: 170px;
+	height: 56px;
+}
+
+.banner__title{ /*форматируем текст и добавляем отступ*/
+	font-weight: 500;
+	font-size: 48px;
+	line-height: 56px;
+	text-transform: uppercase;
+	margin-bottom: 52px;
+}
+
+/*задаем глобольные настройки для горизонтальных линий*/
+.section-row{ 
+	height: 1px;
+	width: 170px;
+	background-color: #ffffff;
+	margin: 0 auto 40px;
+}
+
+/*задаем отступ для горизонтальной линии в банере*/
+.banner .section-row{ 
+	margin: 0 0 42px;
+}
+
+.banner__subtitle{ /*задаем отсупы элементу*/
+	margin-bottom: 42px;
+}
+
+.link{ /*фоматируем кнопку-ссылку, далаем отдельным блоком в БЭМ, т.к элемент повторящийся*/
+	display: flex;
+	justify-content: center; /*центрируем*/
+	align-items: center; /*центрируем*/
+	height: 58px; 
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+	border: 2px solid #ffffff;
+	color: #ffffff;
+	transition: border-color 0.25s ease-in-out, 
+					color 0.25s ease-in-out;
+}
+
+.link:hover{ /*фоматируем кнопку-ссылку при наведении*/
+	border-color: #EC7979;
+	color: #EC7979;
+}
+
+.link:active{ /*фоматируем кнопку-ссылку при нажатии*/
+	border-color: #AB4949;
+	background-color: #AB4949;
+	color: #ffffff;
+}
+
+.banner__link { /*задаем ширину кнопке-ссылке в банере*/
+	width: 270px;
+}
+
+.banner__form{ /*фоматируем форму в банере*/
+	font-family: 'Open Sans', sans-serif; /*меняем шрифт у всей формы*/
+	height: 450px;
+	background-color: #ffffff;
+	border-radius: 10px; /*добавляем радиуса блоку со всех углов*/
+	display: flex;
+	flex-direction: column; /*меняем главную ось*/
+	justify-content: space-between; /*растягиваем элементы по главной оси*/
+	flex: 0 0 auto;
+}
+
+.form__container{ 
+	padding: 35px 50px 0; /*задаем отсупы элементу*/
+	display: flex;
+	flex-direction: column;
+}
+
+.form__title{ /*задаем стили заголовку*/
+	font-weight: 700;
+	font-size: 24px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #333333;
+	margin-bottom: 90px;
+}
+
+.form__title span{ /*меняем цвет одному слову в заголовке*/
+	color: #EC7979;
+}
+
+.banner .form__input { 
+	margin-bottom: 30px;
+}
+
+.form__input input,
+.form__input textarea {
+	width: 100%;
+	height: 38px; /*высота одного инпута*/
+	border: none;
+	border-bottom: 1px solid #BDBDBD; /*нижнее подчеркивание*/
+	font-family: inherit;
+	color: #333333;
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.form__input input::placeholder,
+.form__input textarea::placeholder{
+	color: #BDBDBD;
+}
+
+.form__button{ 
+	height: 60px;
+	border-radius: 0 0 10px 10px; /*добавляем нижние радиусы*/
+	border: none;  /*отменяем дефолтные настройки тега button*/
+	background-color: #EC7979;
+	font-family: 'Open Sans', sans-serif; /*отменяем дефолтные настройки тега button*/
+	font-weight: 600;
+	font-size: 15px;
+	color: #ffffff;
+	text-transform: capitalize; /*все слова с большой буквы*/
+	transition: background-color 0.4s 0.1s ease;
+}
+
+.form__button:hover{ /*фоматируем кнопку при наведении*/
+	background-color: #AB4949;	
+}
+
+.form__button:active{ /*фоматируем кнопку при нажатии*/
+	box-shadow: inset 0px 0px 10px #AB4949; 
+	/*inset - меняем направление смещения тени на внутренее
+	0 0 - смещение тени по осям (в данном случае его нет
+	10px - штрина размытия тени
+	цвет тени)*/
+	background-color: #EC7979;
+}
+
+/* ------Social Media-------- */
+
+.media	{
+	background-color: #F8EFEF;
+	padding: 20px 0;
+}
+
+.media__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 30px;
+}
+
+.media__info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	row-gap: 35px;	
+}
+
+.media__title {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 24px;
+	color: #333333;
+}
+
+.media__desc {
+	color: #86878B;
+}
+
+.media__icons {
+	display: flex;
+	justify-content: space-between;
+	column-gap: 30px;
+}
+
+.media .social__icon {
+	width: 70px;
+	height: 70px;
+}
+
+
+/* ------About-------- */
+
+.about,
+.customer,
+.design,
+.pricing-option,
+.contact-us { /*задаем отсупы секции*/
+	padding: 110px 0 55px;
+}
+
+.section-header{ /*создаем новый блок по БЭМ, т.к. он универсальный, делаем его флекс элементом*/
+	text-align: center;
+	margin-bottom: 80px;
+}
+
+.about .section-header {
+	margin-bottom: 115px;
+}
+
+.section-header__title{ /*стили заголовку*/
+	font-size: 36px;
+	line-height: 42px;
+	text-transform: uppercase;
+	margin-bottom: 55px;
+	font-weight: 400;
+}
+
+.about .section-row{
+	background-color: #EC7979;
+}
+
+.section-header__subtitle{ /*стили подзаголовку*/
+	color: #86878B;
+}
+
+.container__items{ /*делаем контейнер для колонок*/
+	display: flex;
+	justify-content: space-between;
+	column-gap: 20px;
+}
+
+.item{ /*задаем отступы, выравние текста и размер для колонок*/
+	width: calc(100%/3);
+	padding: 5px; 
+	text-align: center;
+}
+
+.item-about__icon{ /*делаем блок для иконок*/
+	width: 92px;
+	height: 92px;
+	margin: 0 auto 65px;
+	background-position: center;
+	border-radius: 50%;
+	border: 1px solid #EC7979;
+	background-repeat: no-repeat;
+	background-size: 70%;
+}
+
+.item-about__icon.item-about__icon_lamp{ /*загружаем иконку в фоновое изобраение для каждой колонки*/
+	background-image: url(../img/about_icon_1.png);
+}
+
+.item-about__icon.item-about__icon_keyboard{
+	background-image: url(../img/about_icon_2.png);
+}
+
+.item-about__icon.item-about__icon_light{
+	background-image: url(../img/about_icon_3.png);
+	background-position: 55% center;
+	background-size: 40%;
+}
+
+.item-about__title{ /*стили заголовку*/
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 24px;
+	margin-bottom: 45px;
+}
+
+/* ------Pricing-option-------- */
+
+.pricing-option {
+	background-color: #F5F5F5;
+}
+
+.pricing-option .section-row{
+	background-color: #EC7979;
+}
+
+.pricing-option__container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pricing-option__option {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	transition: box-shadow 0.5s ease-in, 
+					transform 0.5s ease-out;
+}
+
+.pricing-option__option:hover {
+	box-shadow: 0px 4px 10px rgba(51, 51, 51, 0.2);
+	transform: translateY(-20px);
+}
+
+
+.pricing-option__option [class^="option__"]:not(:last-child) {
+	border: 1px solid #F5F5F5;
+}
+
+.option__header {
+	font-family: 'Open Sans', sans-serif; 
+	font-weight: 700;
+	font-size: 24px;
+	padding: 18px 0;
+	color: white;
+	background-color: #333333;
+}
+
+.option__price {
+	font-weight: 700;
+	font-size: 36px;
+	padding: 40px 0;
+	color: white;
+	background-color: #333333;
+}
+
+.option__longtime {
+	padding: 15px 0;
+	color: rgba(255, 255, 255, 0.5);
+	background-color: #333333;
+}
+
+.option__options li {
+	text-transform: capitalize;
+	color: #86878B;
+	padding: 15px 0;
+	background-color: #ffffff;
+	border: 1px solid #F5F5F5;
+}
+
+/* ------Customer-------- */
+
+.customer .section-row{
+	background-color: #EC7979;	
+}
+
+.item-customer { 
+	display: grid; 
+	grid-template-rows: auto auto;
+	row-gap: 65px;
+}
+
+.item-customer__quote{
+	padding: 38px 15px; /*внутренние отступы*/
+	background-color: #E2E2E2;
+	color: #86878B;
+	border-radius: 10px;
+	position: relative; /*для того, чтобы можно было позиционировать потомков относительно данного блока*/
+}
+
+.item-customer__quote::after{ /*добавляем псевдо-элемент треугольник*/
+	content: ''; /*делаем пустой контент*/
+	clear: both; /*обнуляем обтекание для разных браузеров*/
+	display: block; /*объявляем блоком*/
+	width: 0; /*ширина блока*/
+	height: 0; /*высота блока*/
+	border-top: 20px solid #E2E2E2; /*задаем цвет и высоту треугольника*/
+	border-right: 15px solid transparent; /*делаем прозрачным правую часть для получения формы треугольника*/
+	border-left: 15px solid transparent; /*делаем прозрачным левую часть для получения формы треугольника*/
+	position: absolute; /*для позиционирования относительно родителя со свойством position: relative */
+	left: 20%; /*смещаем относительно левого края родителя на 20% ширины блока */
+	bottom: -20px; /*смещаем относительно нижнего края на 20px родителя*/
+}
+
+.author	{ 
+	display: grid;
+	grid-template: repeat(3, auto) / auto 1fr;
+	justify-items: start;
+	column-gap: 20px;
+	text-align: left;
+}
+
+.author__photo{ /*делаем контейнер для фото*/
+	width: 70px;
+	height: 70px;
+	grid-row: 1 / 3;
+	grid-column: 1  / 2;
+}
+
+.author__photo img{ /*размеры для фото*/
+	width: 100%;
+	height: 100%;
+}
+
+.author__name{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 24px;
+	text-transform: capitalize;
+	line-height: 32px;
+	grid-row: 1 / 3;
+	grid-column: 2  / 3;
+}
+
+.author__job {
+	font-weight: 400;
+	font-size: 18px;
+	grid-row: 3 / 4;
+	grid-column: 2  / 3;
+}
+
+.slide {
+	display: none;
+}
+
+/* ------Design-------- */
+
+.design { /*задаем фонове изображение с затемнением в банере*/
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/design.jpg");
+	background-repeat: no-repeat; /*не повторять фоновое изображение*/
+	background-position: center; /*центрируем фоновое изображение в элнменте*/
+	background-size: cover; /*подгоняем фоновое изображение по размерам (растягивание/сужение)*/
+	color: #ffffff; /*базовый цвет шртфта для секции*/
+}
+
+.design .section-header__subtitle{ /*меняем базовый цвет шртфта для подзаголовка в данной секции*/
+	color: #ffffff;
+}
+
+.design__link{ /*меняем параметры кнопки для данной секции*/
+	margin: 0 auto;
+	width: 370px;
+}
+
+/* ------Contact Us-------- */
+
+.contact-us__form {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.contact-us .section-row{
+	background-color: #EC7979;	
+}
+
+.contact-us__grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	row-gap: 50px;
+	column-gap: 30px;
+	margin-bottom: 50px;
+}
+
+.form__input_message {
+	grid-column: 2 / 3;
+	grid-row: 1 / span 3;
+}
+
+.form__input_message textarea{
+	height: 100%;
+}
+
+.form__input textarea {
+	resize: none;
+}
+
+.contact-us__link{ /*меняем параметры кнопки для данной секции*/
+	margin: 0 auto;
+	width: 370px;
+	background-color: #EC7979;
+	border: none;
+	transition: background-color 0.25s ease-in-out;
+}
+
+.contact-us__link:hover{ /*фоматируем кнопку при наведении*/
+	background-color: #AB4949;
+	color: #ffffff;	
+}
+
+.contact-us__link:active{ /*фоматируем кнопку при нажатии*/
+	box-shadow: inset 0px 0px 10px #AB4949; 
+	background-color: #EC7979;
+	color: #ffffff;	
+}
+
+/* ------Footer-------- */
+
+.footer{ /*задаем высоту и цвет заливки футера*/
+	height: 164px;
+	background-color: #000000;
+}
+
+.footer__wrapper{ /*задаем флекс контейнер для футера и выраниваем по 2м осям*/
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+}
+
+.footer__icons{ /*задаем флекс контейнер для иконок*/
+	display: flex;
+	justify-content: center;
+	column-gap: 30px;
+}
+
+.social__icon {
+	display: block;
+	width: 54px;
+	height: 54px;
+}
+
+.social__icon svg{ /*задаем размеры для иконок*/
+	width: 100%;
+	height: 100%;
+	display: block;
+	fill: #CCCCCC; /*задаем фон для иконок*/
+	stroke: #CCCCCC; /*цвет границы иконок*/
+	transition: fill 1s 0.1s ease;
+}
+
+.icon_facebook:hover svg{
+	fill: #0000d3; /*задаем фон для иконок при наведении*/
+}
+
+.icon_twitter:hover svg{
+	fill: #039fc9; /*задаем фон для иконок при наведении*/
+}
+
+.icon_linkedin:hover svg{
+	fill: #005489; /*задаем фон для иконок при наведении*/
+}
+
+.icon_pinterest:hover svg{
+	fill: #c00000; /*задаем фон для иконок при наведении*/
+}
+
+.icon_instagram:hover svg{
+	fill: #8900e4; /*задаем фон для иконок при наведении*/
+}
+
+.icon_github:hover svg{
+	fill: #000000; /*задаем фон для иконок при наведении*/
+}
+
+.icon_rss:hover svg{
+	fill: #ffa200; /*задаем фон для иконок при наведении*/
+}
+
+.footer__copyright{ /*параметры для копирайта*/
+	color: rgba(255, 255, 255, 0.5); /*добавление альфа-канала для прозрачности*/
+}
