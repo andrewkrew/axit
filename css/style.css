@@ -130,18 +130,27 @@ label[for='burger'] {
 	position: fixed;
 	top: 0;
 	left: 0;
-	padding-top: 56px;
+	padding: 56px 0 30vh;
 	background-color: #000000;
 	z-index: -1;
 }
 
 .hidden-menu__nav {
 	margin: 0 auto;
-	padding: 55px 20px 0;
-	width: 50%;
-	min-width: 226px;
+	padding-top: 10vh;
 	height: 100%;
-	text-align: center;
+}
+
+.hidden-menu__nav ul{
+	margin: 0 auto;
+	padding-top: 10vh;
+	height: 100%;
+	/* text-align: center; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
 
 .hidden-menu__nav ul .nav__item a{
@@ -153,9 +162,9 @@ label[for='burger'] {
 	color: #ffffff;
 }
 
-.hidden-menu__nav ul .nav__item:not(:last-child) a{
+/* .hidden-menu__nav ul .nav__item:not(:last-child) a{
 	margin-bottom: 55px;
-}
+} */
 
 .header__nav ul{ /*задаем флекс контейнер для меню в хедере*/
 	display: flex;
@@ -283,6 +292,11 @@ label[for='burger'] {
 	flex: 0 0 auto;
 }
 
+.form input:focus,
+.form textarea:focus {
+	border: 1px solid #AB4949;
+}
+
 .form__container{ 
 	padding: 35px 50px 0; /*задаем отсупы элементу*/
 	display: flex;
@@ -316,6 +330,7 @@ label[for='burger'] {
 	color: #333333;
 	font-size: 14px;
 	line-height: 19px;
+	padding: 10px;
 }
 
 .form__input input::placeholder,
@@ -441,6 +456,7 @@ label[for='burger'] {
 }
 
 .tabs__container {
+	height: 100%;
 	position: relative;
 	transition: top 0.2S ease-in-out;
 }
@@ -450,11 +466,11 @@ label[for='burger'] {
 }
 
 #tab__2:checked ~ .tabs__viewer .tabs__container {
-	top: calc(-100% - 2px);
+	top: -100%;
 }
 
 #tab__3:checked ~ .tabs__viewer .tabs__container {
-	top: calc(-200% - 4px);
+	top: -200%;
 }
 
 #tab__1:checked ~ .tabs__name label[for='tab__1'],
@@ -472,10 +488,13 @@ label[for='burger'] {
 }
 
 .tab__info {
+	height: 100%;
 	padding: 50px 0 50px 100px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	flex: 0 0 60%;
+	row-gap: 30px;
 }
 
 .tab__title {
@@ -483,11 +502,9 @@ label[for='burger'] {
 	font-weight: 700;
 	font-size: 30px;
 	line-height: 41px;
-	margin-bottom: 70px;
 }
 
 .tab__desc {
-	margin-bottom: 30px;
 	flex: 1 1 200px;
 	overflow: auto;
 }
@@ -559,7 +576,8 @@ label[for='burger'] {
 }
 
 .item{ /*задаем отступы, выравние текста и размер для колонок*/
-	width: calc(100%/3);
+	width: calc(90%/3);
+	min-width: 300px;
 	padding: 5px; 
 	text-align: center;
 }

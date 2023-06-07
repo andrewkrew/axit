@@ -34,7 +34,7 @@
 	.design,
 	.pricing-option,
 	.contact-us { 
-		padding: 100px 0 45px;
+		padding: 60px 0 30px;
 }
 
 	.banner__logo{
@@ -128,7 +128,6 @@
 	.tab__title {
 		font-size: 24px;
 		line-height: 33px;
-		margin-bottom: 40px;
 	}
 
 	.tab__desc {
@@ -220,7 +219,18 @@
 		width: 45px;
 		height: 45px;
 	}
+}
 
+@media (max-width: 970px) {
+	.container__items{ 
+		justify-content: center;
+		flex-wrap: wrap;
+		row-gap: 30px;
+	}
+	
+	.item{ 
+		width: 45%;
+	}
 }
 
 @media (max-width: 768px) {
@@ -241,7 +251,7 @@
 	}
 
 	.hidden-menu {
-		top:-100vh;
+		top:-150vh;
 		transition: top 0.4s ease-in-out;
 	}
 
@@ -368,27 +378,22 @@
 	/* ------Tabs-------- */
 
 	.tabs__viewer {
-		height: 430px;
+		height: 350px;
 	}
 
-	/* .tabs__container {
-		transition: none;
-	} */
-
 	.tabs__tab {
-		height: 430px;
 		justify-content: center;
 	}
 
 	.tab__info {
 		padding: 30px 5px;
 		text-align: center;
+		row-gap: 15px;
 	}
 
 	.tab__title {
 		font-size: 18px;
 		line-height: 25px;
-		margin-bottom: 70px;
 	}
 
 	.tab__link {
@@ -403,7 +408,6 @@
 
 	.tabs__name label {
 		width: 32%;
-		/* transition: none; */
 	}
 
 	#tab__1:checked ~ .tabs__name label[for='tab__1'],
@@ -425,6 +429,7 @@
 	.section-header__title{
 		font-size: 24px;
 		line-height: 28px;
+		margin-bottom: 30px;
 	}    
 	
 	.container__items {
@@ -441,7 +446,7 @@
 	.item-about__icon{
 		width: 80px;
 		height: 80px;
-		margin: 0 auto 50px;
+		margin: 0 auto 25px;
 	}
 	
 	.item-about__title{
@@ -506,8 +511,17 @@
 }
 
 @media (max-width: 480px) {
-	
+
+	.tabs__viewer {
+		height: 400px;
+	}
+
 	/* ------Customer-------- */
+
+	.container__items{ 
+		justify-content: space-between;
+		flex-wrap: nowrap;
+	}
 
 	.customer {
 		position: relative;
